@@ -97,9 +97,9 @@ public class HoaDon {
     @JoinColumn(name = "voucher_id", referencedColumnName = "id")
     private Voucher voucher;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "tai_khoan_id", referencedColumnName = "id")
-//    private TaiKhoan taiKhoan;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tai_khoan_id", referencedColumnName = "id")
+    private TaiKhoan taiKhoan;
 
     @OneToMany(mappedBy = "hoaDon")
     private List<HoaDonChiTiet> lstHoaDonChiTiet;

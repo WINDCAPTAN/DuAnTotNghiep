@@ -153,7 +153,7 @@ public class VoucherServiceImpl implements VoucherService {
 
     @Override
     @Transactional
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 10000000)
     public void updateVoucherStatus() {
         List<Voucher> vouchers = voucherRepository.fillDangDienRaAndSapDienRa();
         LocalDateTime currentDateTime = LocalDateTime.now();
@@ -165,8 +165,6 @@ public class VoucherServiceImpl implements VoucherService {
             } else {
                 voucher.setTrangThai(0);
             }
-
-            // Cập nhật trạng thái
             update(voucher);
         }
     }

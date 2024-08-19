@@ -17,7 +17,10 @@
     <link rel='stylesheet' href='https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css'>
     <!--    thư viện của bảng tích hợp tìm kiếm end-->
 
+    <!-- Favicons -->
     <div th:replace="~{admin-template/fragment/header :: header}"></div>
+
+
 </head>
 
 <body>
@@ -97,11 +100,11 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Quản Lý Sản Phẩm</span><i
                     class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+            <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="/admin/san-pham-chi-tiet">
                         <i class="bi bi-circle"></i><span>Sản Phẩm Chi Tiết</span>
@@ -118,12 +121,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/tay-ao">
-                        <i class="bi bi-circle"></i><span>Tay áo</span>
+                    <a href="/admin/loai-de">
+                        <i class="bi bi-circle"></i><span>Loại Đế</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/mau-sac" class="active">
+                    <a href="/admin/mau-sac">
                         <i class="bi bi-circle"></i><span>Màu Sắc</span>
                     </a>
                 </li>
@@ -150,18 +153,18 @@
         </li><!-- End Forms Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-person-vcard"></i><span>Quản Lý Tài Khoản</span><i
                     class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="/admin/nhan-vien">
                         <i class="bi bi-circle"></i><span>Quản lý nhân viên</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../admin/khach-hang">
+                    <a href="/admin/khach-hang" class="active">
                         <i class="bi bi-circle"></i><span>Quản lý khách hàng</span>
                     </a>
                 </li>
@@ -181,12 +184,13 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Danh Sách Màu Sắc</h1>
+        <h1>Quản Lý Khách Hàng</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
+
                 <div class="card">
                     <div class="card-body">
                         <!--    tìm kiếm theo trạng thái-->
@@ -194,110 +198,173 @@
                             <div class="col-md-8">
                                 <label>Trạng thái:</label>
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                    <a href="/admin/mau-sac" class="btn btn-outline-primary">
+                                    <a href="/admin/khach-hang" class="btn btn-outline-primary">
                                         Tất cả</a>
-                                    <a href="/admin/mau-sac/dang-hoat-dong"
+                                    <a href="/admin/khach-hang/dang-hoat-dong"
                                        class="btn btn-outline-primary">
                                         Đang hoạt động</a>
-                                    <a href="/admin/mau-sac/ngung-hoat-dong"
+                                    <a href="/admin/khach-hang/ngung-hoat-dong"
                                        class="btn btn-outline-primary">
                                         Ngừng hoạt động</a>
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <a href="/admin/mau-sac" style="float: right"
+                                <a href="/admin/khach-hang" style="float: right"
                                    class="btn btn-primary">
                                     <i class="bi bi-arrow-clockwise"> Làm mới</i>
                                 </a>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-sm-2">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        style="float: right; " data-bs-target="#them-mau-sac">
+                                        style="float: right; " data-bs-target="#them-khach-hang">
                                     Thêm mới
                                 </button>
                             </div>
                         </div>
                         <!--     tìm kiếm theo trạng thái end-->
 
-                        <!-- Modal thêm thuộc tính -->
-                        <div class="modal fade" id="them-mau-sac" tabindex="-1" aria-labelledby="them-mau-sacLabel"
+                        <!-- Modal -->
+                        <div class="modal fade" id="them-khach-hang" tabindex="-1"
+                             aria-labelledby="them-khach-hangLabel"
                              aria-hidden="true">
+
                             <!--js bật modal khi check-->
                             <script th:if="${checkModal=='modal'}">
                                 window.addEventListener('DOMContentLoaded', (event) => {
                                     // Hiển thị modal
-                                    var myModal = new bootstrap.Modal(document.getElementById('them-mau-sac'));
+                                    var myModal = new bootstrap.Modal(document.getElementById('them-khach-hang'));
                                     myModal.show();
                                 });
                             </script>
                             <!--js bật modal khi check-->
 
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 100%;margin: auto;margin-top: 40%;">
+                                <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="them-mau-sacLabel">Thêm Màu Sắc</h1>
+                                        <h1 class="modal-title fs-5" id="them-khach-hangLabel">Thêm Khách Hàng</h1>
                                     </div>
+                                    <div class="modal-body">
 
-                                    <!-- form thêm thuộc tính -->
-                                    <form th:action="@{/admin/mau-sac/add}" method="post"
-                                          enctype="multipart/form-data"
-                                          th:object="${mauSac}">
-
-                                        <div class="modal-body">
-                                            <div class="row mb-3" style="margin-top: 3%;">
-                                                <label for="themMauSac" class="col-sm-4 col-form-label"><span
-                                                        style="color: red;">*</span>Màu
-                                                    sắc</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" class="form-control" id="themMauSac"
-                                                           placeholder="Nhập màu sắc" name="ten"  th:field="*{ten}" >
-                                                    <span class="check-loi" th:errors="*{ten}"></span>
-                                                    <span class="check-loi" th:text="${checkTenTrung}"></span>
-                                                </div>
+                                        <!-- form thêm khách hàng -->
+                                        <form class="row g-3" style="margin-top: 1%;margin-bottom: 5%;" method="post"
+                                              enctype="multipart/form-data"
+                                              th:action="@{/admin/khach-hang/add}"
+                                              th:object="${khachHang}">
+                                            <div class="col-md-6">
+                                                <label class="form-label">
+                                                    <span class="dau-sao">*</span>Tên tài khoản:</label>
+                                                <input type="text" class="form-control"
+                                                       placeholder="Nhập tên tài khoản" th:field="*{tenTaiKhoan}">
+                                                <span class="check-loi" th:errors="*{tenTaiKhoan}"></span>
+                                                <span class="check-loi" th:text="${checkTenTrung}"></span>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                Đóng
-                                            </button>
-                                            <button type="submit" class="btn btn-success">Thêm</button>
-                                        </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">
+                                                    <span class="dau-sao">*</span>Tên khách hàng:</label>
+                                                <input type="text" class="form-control" placeholder="Nhập khách hàng"
+                                                       th:field="*{hoVaTen}">
+                                                <span class="check-loi" th:errors="*{hoVaTen}"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">
+                                                    <span class="dau-sao">*</span>Ngày sinh:</label>
+                                                <input type="date" class="form-control" th:field="*{ngaySinh}">
+                                                <span class="check-loi" th:errors="*{ngaySinh}"></span>
+                                                <span class="check-loi" th:if="${checkNgaySinh=='ngaySinh'}">Năm sinh phải lớn 1900</span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">
+                                                    <span class="dau-sao">*</span>Giới tính:</label>
+                                                <div style="margin-top: 1%;">
+                                                    <input class="form-check-input" type="radio" name="gridRadios"
+                                                           style="margin-left:5%;" checked th:field="*{gioiTinh}"
+                                                           value="0">
+                                                    <label class="form-check-label">
+                                                        Nam
+                                                    </label>
 
-                                    </form>
+                                                    <input class="form-check-input" type="radio" name="gridRadios"
+                                                           style="margin-left:5%;"  th:field="*{gioiTinh}"
+                                                           value="1">
+                                                    <label class="form-check-label">
+                                                        Nữ
+                                                    </label>
+                                                </div>
+                                                <span class="check-loi" th:errors="*{gioiTinh}"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">
+                                                    <span class="dau-sao">*</span>Số điện thoại:</label>
+                                                <input type="text" class="form-control"
+                                                       placeholder="Nhập số điện thoại" th:field="*{soDienThoai}">
+                                                <span class="check-loi" th:errors="*{soDienThoai}"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">
+                                                    <span class="dau-sao">*</span>Email:</label>
+                                                <input type="email" class="form-control" placeholder="Nhập email"
+                                                       th:field="*{email}" name="email">
+                                                <span class="check-loi" th:errors="*{email}"></span>
+                                                <span class="check-loi" th:text="${checkEmailTrung}"></span>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Đóng
+                                                </button>
+                                                <button type="submit" class="btn btn-success">Thêm</button>
+                                            </div>
+                                        </form>
+                                        <!-- form thêm khách hàng end-->
+
+                                    </div>
 
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal thêm thuộc tính end-->
+                        <!-- Modal end-->
 
-                        <table id="example" class="display" style="width:100%">
+
+                        <!-- Table with stripped rows -->
+                        <table id="example" class="display" style="width:100%;margin-top: 4%">
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên</th>
+                                <th>Họ Và Tên</th>
+                                <th>Email</th>
+                                <th>Số Điện Thoại</th>
+                                <th>Ngày tham gia</th>
                                 <th>Trạng Thái</th>
                                 <th>Hành Động</th>
                             </tr>
                             <thead>
                             <tbody>
-                        <tr th:each="sanPham,iterStat : ${listMauSac}">
-                            <td th:text="${iterStat.index+1}"></td>
-                            <td th:text="${sanPham.ten}"></td>
-                            <td class="trangthaidkd" th:if="${sanPham.trangThai==0}">Đang kinh doanh</td>
-                            <td class="trangthainkd" th:if="${sanPham.trangThai==1}">Ngừng kinh doanh</td>
-                            <td>
-                                <a th:href="@{/admin/mau-sac/view-update/{id}(id=${sanPham.id})}"
-                                   class="btn btn-warning">
-                                    <i class="bi bi-pencil-fill"></i>
-                                </a>
-                            </td>
-                        </tr>
+                            <tr th:each="khachHang,iterStat : ${listTaiKhoan}">
+                                <td th:text="${iterStat.index+1}"></td>
+                                <td th:text="${khachHang.getHoVaTen()}"></td>
+                                <td th:text="${khachHang.email}"></td>
+                                <td th:text="${khachHang.soDienThoai}"></td>
+                                <td th:text="${#dates.format(khachHang.ngayTao, 'HH:mm dd/MM/yyyy')}"></td>
+                                <td class="trangthaidkd" th:if="${khachHang.trangThai==0}">Đang hoạt động</td>
+                                <td class="trangthainkd" th:if="${khachHang.trangThai==1}">Ngừng hoạt động</td>
+                                <td>
+                                    <!-- button và model -->
+                                    <a type="button" class="btn btn-warning"
+                                       data-bs-target="#sua-khach-hang"
+                                       th:href="@{/admin/khach-hang/view-update-khach-hang/{id}(id=${khachHang.id})}">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                </td>
+                            </tr>
                             </tbody>
                             <tfoot hidden="hidden">
                             <tr>
                                 <th>STT</th>
-                                <th>Tên Loại Đế</th>
+                                <th>Họ Và Tên</th>
+                                <th>Email</th>
+                                <th>Số Điện Thoại</th>
+                                <th>Ngày tham gia</th>
                                 <th>Trạng Thái</th>
                                 <th>Hành Động</th>
                             </tr>
@@ -306,6 +373,7 @@
 
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -361,7 +429,6 @@
 </div>
 <!--Thông báo thành công end-->
 
-
 <!--Thông báo thất bại-->
 <div class="toast-container position-fixed top-0 end-0 p-3">
     <script th:if="${checkThongBao=='thaiBai'}">
@@ -415,7 +482,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Website bán áo Glacat
+        Website bán giày Glacat
     </div>
 </footer><!-- End Footer -->
 
@@ -486,10 +553,12 @@
         content: ''; /* Xóa nội dung */
     }
 </style>
-<!--    thư viện của bảng tích hợp tìm kiếm end-->
-
+<!--    thư viện của bảng tích hợp tìm kiếm end--><!-- Vendor JS Files -->
 <div th:replace="~{admin-template/fragment/script :: script}"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
 </body>
+
 
 </html>

@@ -56,8 +56,8 @@ public class DiaChi {
     @Column(name = "trang_thai")
     private Integer trangThai;
 
-//    @ManyToOne(fetch = FetchType.EAGER )
-//    @JoinColumn(name = "tai_khoan_id", referencedColumnName = "id")
-//    private TaiKhoan taiKhoan;
+    @ManyToOne(fetch = FetchType.EAGER )
+    @JoinColumn(name = "tai_khoan_id", referencedColumnName = "id")
+    private TaiKhoan taiKhoan;
 
 }
