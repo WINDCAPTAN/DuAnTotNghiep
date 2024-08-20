@@ -107,7 +107,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 
     @Override
     public void sendEmail1(TaiKhoan taiKhoan, String url, String random) {
-        String from = "glacatshopshoes@gmail.com";
+        String from = "glacatshopstore@gmail.com";
         String to = taiKhoan.getEmail();
         String subject = "Chào mừng bạn đến với Glacat - Xác Minh Tài Khoản của Bạn";
         String content =
@@ -124,7 +124,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
                         "<p class=\"email-content\">\n" +
                         "Hãy sử dụng mã xác minh trên để hoàn tất quá trình đăng ký của bạn. Nếu bạn không thực hiện thao tác này, tài khoản của bạn có thể không được kích hoạt.\n" +
                         "<br>\n" +
-                        "Cảm ơn bạn đã chọn Glacat! Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ với chúng tôi.\n" +
+                        "Cảm ơn bạn đã chọn Glacat! Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ với chúng tôi. Chúng tôi sẽ đem đến cho bạn những sản phẩm tuyệt vời nhất server Việt Nam ahihi\n" +
                         "</p>";
         try {
 

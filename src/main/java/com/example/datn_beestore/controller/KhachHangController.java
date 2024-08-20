@@ -1,5 +1,7 @@
 package com.example.datn_beestore.controller;
 
+import com.example.datn_beestore.confic.PrincipalCustom;
+import com.example.datn_beestore.confic.UserInfoUserDetails;
 import com.example.datn_beestore.entyti.DiaChi;
 import com.example.datn_beestore.entyti.TaiKhoan;
 import com.example.datn_beestore.entyti.VaiTro;
@@ -46,12 +48,12 @@ public class KhachHangController {
 
     @GetMapping()
     public String hienThi(Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
         model.addAttribute("khachHang", new TaiKhoan());
         return "/admin-template/khach_hang/khach-hang";
@@ -59,12 +61,12 @@ public class KhachHangController {
 
     @GetMapping("/dang-hoat-dong")
     public String hienThiDangHoatDong(Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listTaiKhoan", taiKhoanService.getAllDangHoatDong());
         model.addAttribute("khachHang", new TaiKhoan());
         return "/admin-template/khach_hang/khach-hang";
@@ -72,12 +74,12 @@ public class KhachHangController {
 
     @GetMapping("/ngung-hoat-dong")
     public String hienThiNgungHoatDong(Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listTaiKhoan", taiKhoanService.getAllNgungHoatDong());
         model.addAttribute("khachHang", new TaiKhoan());
         return "/admin-template/khach_hang/khach-hang";

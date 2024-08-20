@@ -1,6 +1,9 @@
 package com.example.datn_beestore.controller;
 
+import com.example.datn_beestore.confic.PrincipalCustom;
+import com.example.datn_beestore.confic.UserInfoUserDetails;
 import com.example.datn_beestore.entyti.Voucher;
+import com.example.datn_beestore.service.TaiKhoanService;
 import com.example.datn_beestore.service.VoucherService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,21 +27,21 @@ public class VoucherController {
     @Autowired
     VoucherService voucherService;
 
-//    @Autowired
-//    TaiKhoanService taiKhoanService;
+    @Autowired
+    TaiKhoanService taiKhoanService;
 
 
-//    private PrincipalCustom principalCustom = new PrincipalCustom();
+    private PrincipalCustom principalCustom = new PrincipalCustom();
 
     @GetMapping()
     public String hienThi(
             Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listVoucher", voucherService.fillAll());
         model.addAttribute("voucher", new Voucher());
         return "/admin-template/voucher/voucher";
@@ -47,12 +50,12 @@ public class VoucherController {
     @GetMapping("/dang-dien-ra")
     public String hienThiDangHoatDong(
             Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listVoucher", voucherService.fillAllDangDienRa());
         model.addAttribute("voucher", new Voucher());
         return "/admin-template/voucher/voucher";
@@ -61,12 +64,12 @@ public class VoucherController {
     @GetMapping("/da-ket-thuc")
     public String hienThiNgungHoatDong(
             Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listVoucher", voucherService.fillAllDaKetThuc());
         model.addAttribute("voucher", new Voucher());
         return "/admin-template/voucher/voucher";
@@ -75,12 +78,12 @@ public class VoucherController {
     @GetMapping("/sap-dien-ra")
     public String hienThiSapDienRa(
             Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listVoucher", voucherService.fillAllSapDienRa());
         model.addAttribute("voucher", new Voucher());
         return "/admin-template/voucher/voucher";
@@ -90,12 +93,12 @@ public class VoucherController {
     public String viewUpdate(
             Model model,
             @PathVariable("id") Long id) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         Voucher voucher = voucherService.getById(id);
         model.addAttribute("voucher", voucher);
         return "/admin-template/voucher/sua-voucher";

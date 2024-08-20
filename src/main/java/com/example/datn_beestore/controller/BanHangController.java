@@ -117,7 +117,7 @@ LichSuHoaDonService lichSuHoaDonService;
         request.setAttribute("listVoucher", voucherService.fillAllDangDienRa());
 
 //        request.setAttribute("lstLshd", lichSuHoaDonService.findByIdhd(id));
-        // request.setAttribute("checkThongBao", "thatBai");
+//         request.setAttribute("checkThongBao", "thatBai");
         HoaDon hd = hoaDonService.findById(id);
 
         Boolean ctb = false;

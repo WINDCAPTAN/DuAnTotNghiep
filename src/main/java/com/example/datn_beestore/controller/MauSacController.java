@@ -1,5 +1,7 @@
 package com.example.datn_beestore.controller;
 
+import com.example.datn_beestore.confic.PrincipalCustom;
+import com.example.datn_beestore.confic.UserInfoUserDetails;
 import com.example.datn_beestore.entyti.MauSac;
 import com.example.datn_beestore.service.MauSacService;
 import jakarta.validation.Valid;
@@ -23,17 +25,17 @@ public class MauSacController {
     @Autowired
     MauSacService mauSacService;
 
-//    private PrincipalCustom principalCustom = new PrincipalCustom();
+    private PrincipalCustom principalCustom = new PrincipalCustom();
 
     @GetMapping()
     public String hienThi(
             Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listMauSac", mauSacService.findAll());
         model.addAttribute("mauSac", new MauSac());
         return "/admin-template/mau_sac/mau-sac";
@@ -42,12 +44,12 @@ public class MauSacController {
     @GetMapping("/dang-hoat-dong")
     public String hienThiDangHoatDong(
             Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listMauSac", mauSacService.getAllDangHoatDong());
         model.addAttribute("mauSac", new MauSac());
         return "/admin-template/mau_sac/mau-sac";
@@ -56,12 +58,12 @@ public class MauSacController {
     @GetMapping("/ngung-hoat-dong")
     public String hienThiNgungHoatDong(
             Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listMauSac", mauSacService.getAllNgungHoatDong());
         model.addAttribute("mauSac", new MauSac());
         return "/admin-template/mau_sac/mau-sac";
@@ -71,12 +73,12 @@ public class MauSacController {
     public String viewUpdate(
             Model model,
             @PathVariable("id") Long id) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         MauSac mauSac = mauSacService.getById(id);
         model.addAttribute("mauSac", mauSac);
         return "/admin-template/mau_sac/sua-mau-sac";

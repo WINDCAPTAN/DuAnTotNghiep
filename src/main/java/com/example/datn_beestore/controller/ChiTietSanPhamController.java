@@ -1,5 +1,7 @@
 package com.example.datn_beestore.controller;
 
+import com.example.datn_beestore.confic.PrincipalCustom;
+import com.example.datn_beestore.confic.UserInfoUserDetails;
 import com.example.datn_beestore.entyti.ChiTietSanPham;
 import com.example.datn_beestore.entyti.SanPham;
 import com.example.datn_beestore.repository.ChiTietSanPhamRepository;
@@ -72,7 +74,7 @@ public class ChiTietSanPhamController {
     @Autowired
     private TayAoRepository tayAoRepository;
 
-//    private PrincipalCustom principalCustom = new PrincipalCustom();
+    private PrincipalCustom principalCustom = new PrincipalCustom();
 
     private Model getString(Model model) {
         model.addAttribute("listSanPham", sanPhamSerivce.getAllDangHoatDong());
@@ -86,12 +88,12 @@ public class ChiTietSanPhamController {
     @GetMapping()
     public String hienThi(
             Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listChiTietSP", chiTietSanPhamSerivce.getAllCtspOneSanPham());
         getString(model);
         model.addAttribute("sanPham", new SanPham());

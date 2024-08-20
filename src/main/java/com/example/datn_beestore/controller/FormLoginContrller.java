@@ -1,6 +1,7 @@
 package com.example.datn_beestore.controller;
 
 
+import com.example.datn_beestore.confic.PrincipalCustom;
 import com.example.datn_beestore.entyti.TaiKhoan;
 import com.example.datn_beestore.entyti.VaiTro;
 import com.example.datn_beestore.repository.KhachHangRepository;
@@ -9,6 +10,7 @@ import com.example.datn_beestore.service.TaiKhoanService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,7 +62,7 @@ public class FormLoginContrller {
     public String loginErorr(
             Model model
     ) {
-        model.addAttribute("message", "Sai thông tin tài khoản");
+        model.addAttribute("message", "Tài khoản bạn không có quyền truy cập hoặc sai thông tin tài khoản");
         return "dang-nhap";
     }
 
@@ -198,6 +200,7 @@ public class FormLoginContrller {
         return "quen-mat-khau";
     }
 
+
     @PostMapping("/quen-mat-khau")
     public String quenMatKau(
             @RequestParam("email") String email, Model model,
@@ -208,7 +211,7 @@ public class FormLoginContrller {
         TaiKhoan taiKhoan = taiKhoanRepository.findByEmail(emailKiemTra);
         url = url.replace(request.getServletPath(), "");
         if (taiKhoan != null) {
-//            service.sendEmail(taiKhoanRepository.findByEmail(email), url);
+            service.sendEmail(taiKhoanRepository.findByEmail(email), url);
             System.out.println("thanh cong");
             model.addAttribute("email", email);
             return "xac-minh-email-tc";

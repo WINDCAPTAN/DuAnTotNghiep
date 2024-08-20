@@ -153,7 +153,7 @@ public class VoucherServiceImpl implements VoucherService {
 
     @Override
     @Transactional
-    @Scheduled(fixedRate = 10000000)
+    @Scheduled(fixedRate = 100000)
     public void updateVoucherStatus() {
         List<Voucher> vouchers = voucherRepository.fillDangDienRaAndSapDienRa();
         LocalDateTime currentDateTime = LocalDateTime.now();

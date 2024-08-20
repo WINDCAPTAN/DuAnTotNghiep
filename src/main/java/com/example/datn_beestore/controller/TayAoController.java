@@ -1,6 +1,8 @@
 package com.example.datn_beestore.controller;
 
 
+import com.example.datn_beestore.confic.PrincipalCustom;
+import com.example.datn_beestore.confic.UserInfoUserDetails;
 import com.example.datn_beestore.entyti.TayAo;
 import com.example.datn_beestore.service.TayAoService;
 import jakarta.validation.Valid;
@@ -24,18 +26,18 @@ public class TayAoController {
     @Autowired
     TayAoService tayAoService;
 
-//    private PrincipalCustom principalCustom = new PrincipalCustom();
+    private PrincipalCustom principalCustom = new PrincipalCustom();
 
     @GetMapping("")
     public String hienThi(
             Model model
     ) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listtayAo", tayAoService.findAll());
         model.addAttribute("tayAo", new TayAo());
         return "/admin-template/tay_ao/tay-ao";
@@ -45,12 +47,12 @@ public class TayAoController {
     public String hienThiDangHoatDong(
             Model model
     ) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listtayAo", tayAoService.getAllDangHoatDong());
         model.addAttribute("tayAo", new TayAo());
         return "/admin-template/tay_ao/tay-ao";
@@ -60,12 +62,12 @@ public class TayAoController {
     public String hienThiNgungHoatDong(
             Model model
     ) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listtayAo", tayAoService.getAllNgungHoatDong());
         model.addAttribute("tayAo", new TayAo());
         return "/admin-template/tay_ao/tay-ao";
@@ -76,12 +78,12 @@ public class TayAoController {
             Model model,
             @PathVariable("id") Long id
     ) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         TayAo tayAo = tayAoService.getById(id);
         model.addAttribute("tayAo", tayAo);
         return "/admin-template/tay_ao/sua-tay-ao";

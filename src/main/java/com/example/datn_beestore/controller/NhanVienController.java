@@ -1,6 +1,8 @@
 package com.example.datn_beestore.controller;
 
 
+import com.example.datn_beestore.confic.PrincipalCustom;
+import com.example.datn_beestore.confic.UserInfoUserDetails;
 import com.example.datn_beestore.entyti.TaiKhoan;
 import com.example.datn_beestore.entyti.VaiTro;
 import com.example.datn_beestore.service.DiaChiService;
@@ -43,12 +45,12 @@ public class NhanVienController {
 
     @GetMapping()
     public String hienThi(Model model) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
         model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
         model.addAttribute("nhanVien", new TaiKhoan());
         return "/admin-template/nhan_vien/nhan-vien";
@@ -89,12 +91,12 @@ public class NhanVienController {
             Model model,
             @PathVariable("id") Long id
     ) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
+        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
+        if (name != null) {
+            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
+        } else {
+            return "redirect:/login";
+        }
 
         TaiKhoan taiKhoan = taiKhoanService.getById(id);
         model.addAttribute("nhanVien", taiKhoan);
