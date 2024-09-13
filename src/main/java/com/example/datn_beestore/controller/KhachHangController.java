@@ -3,9 +3,11 @@ package com.example.datn_beestore.controller;
 import com.example.datn_beestore.confic.PrincipalCustom;
 import com.example.datn_beestore.confic.UserInfoUserDetails;
 import com.example.datn_beestore.entyti.DiaChi;
+import com.example.datn_beestore.entyti.GioHang;
 import com.example.datn_beestore.entyti.TaiKhoan;
 import com.example.datn_beestore.entyti.VaiTro;
 import com.example.datn_beestore.service.DiaChiService;
+import com.example.datn_beestore.service.GioHangService;
 import com.example.datn_beestore.service.KhachHangService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -36,8 +38,8 @@ public class KhachHangController {
     @Autowired
     DiaChiService diaChiService;
 
-//    @Autowired
-//    GioHangService gioHangService;
+    @Autowired
+    GioHangService gioHangService;
 
     String random3 = ranDom1();
 
@@ -193,157 +195,6 @@ public class KhachHangController {
         redirectAttributes.addFlashAttribute("checkModal", "modal");
         return "redirect:/admin/khach-hang/view-update-khach-hang/" + idKhachHang;
     }
-//    @GetMapping("/view-update-dia-chi/{idKhachHang}/{idDiaChi}")
-//    public String viewUpdateAndDiaChi(
-//            Model model,
-//            @PathVariable("idKhachHang") Long idKhachHang,
-//            @PathVariable("idDiaChi") Long idDiaCHi
-//    ) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
-//        DiaChi diaChi = diaChiService.getById(idDiaCHi);
-//        List<DiaChi> listDiaChi = diaChiService.getAllByTaiKhoan(idKhachHang);
-//        TaiKhoan taiKhoan = taiKhoanService.getById(idKhachHang);
-//        model.addAttribute("listDiaChi", listDiaChi);
-//        model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
-//
-////        check button update
-//        model.addAttribute("checkUpdate", "update");
-//
-////        id khách hàng và id địa chỉ cần update
-//        model.addAttribute("idKhachHangUpdate", idKhachHang);
-//        model.addAttribute("idDiaChiUpdate", idDiaCHi);
-//
-//        model.addAttribute("khachHang", taiKhoan);
-//        model.addAttribute("diaChi", diaChi);
-//        return "/admin-template/khach_hang/sua-khach-hang";
-//    }
-
-//    @PostMapping("/dia-chi")
-//    public String updateDiaChi(
-//            @Valid
-//            @ModelAttribute("diaChi") DiaChi diaChi,
-//            BindingResult result,
-//            Model model,
-////            lấy id của khách hàng
-//            @RequestParam("idTaiKhoanUpdateRequestParam") Long idTaiKhoan,
-//            RedirectAttributes redirectAttributes
-//    ) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
-//        if (diaChi.getId() == null) {
-//            if (result.hasErrors()) {
-//                model.addAttribute("checkModal", "modal");
-//                model.addAttribute("checkThongBao", "thaiBai");
-//                model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
-//
-//                List<DiaChi> listDiaChi = diaChiService.getAllByTaiKhoan(idTaiKhoan);
-//                TaiKhoan taiKhoan = taiKhoanService.getById(idTaiKhoan);
-//                model.addAttribute("listDiaChi", listDiaChi);
-//                model.addAttribute("idKhachHangUpdate", idTaiKhoan);
-//
-////        check button add
-//                model.addAttribute("checkAdd", "add");
-//                model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
-//                model.addAttribute("khachHang", taiKhoan);
-//                return "/admin-template/khach_hang/sua-khach-hang";
-//            } else if (!diaChiService.checkTenTrung(diaChi.getDiaChiCuThe(), idTaiKhoan)) {
-//                model.addAttribute("checkModal", "modal");
-//                model.addAttribute("checkThongBao", "thaiBai");
-//                model.addAttribute("checkTenTrungDiaChi", "Tên địa chỉ cũ thể đã tồn tại");
-//                List<DiaChi> listDiaChi = diaChiService.getAllByTaiKhoan(idTaiKhoan);
-//                TaiKhoan taiKhoan = taiKhoanService.getById(idTaiKhoan);
-//                model.addAttribute("listDiaChi", listDiaChi);
-//                model.addAttribute("idKhachHangUpdate", idTaiKhoan);
-////        check button add
-//                model.addAttribute("checkAdd", "add");
-//                model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
-//                model.addAttribute("khachHang", taiKhoan);
-//                return "/admin-template/khach_hang/sua-khach-hang";
-//            } else {
-//                TaiKhoan taiKhoan = taiKhoanService.getById(idTaiKhoan);
-//                diaChi.setTaiKhoan(taiKhoan);
-//                diaChi.setTrangThai(0);
-//                diaChi.setNgayTao(new Date());
-//                diaChi.setNgaySua(new Date());
-//                diaChiService.save(diaChi);
-//                return "redirect:/admin/khach-hang/view-update-khach-hang/" + idTaiKhoan;
-//            }
-//        } else {
-//            if (result.hasErrors()) {
-//                model.addAttribute("checkModal", "modal");
-//                model.addAttribute("checkThongBao", "thaiBai");
-//                model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
-//
-//                List<DiaChi> listDiaChi = diaChiService.getAllByTaiKhoan(idTaiKhoan);
-//                TaiKhoan taiKhoan = taiKhoanService.getById(idTaiKhoan);
-//                model.addAttribute("listDiaChi", listDiaChi);
-//                model.addAttribute("idKhachHangUpdate", idTaiKhoan);
-//
-////        check button update
-//                model.addAttribute("checkUpdate", "update");
-//                model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
-//                model.addAttribute("khachHang", taiKhoan);
-//                return "/admin-template/khach_hang/sua-khach-hang";
-//            } else if (!diaChiService.checkTenTrungSua(diaChi.getId(), diaChi.getDiaChiCuThe(), idTaiKhoan)) {
-//                model.addAttribute("checkModal", "modal");
-//                model.addAttribute("checkThongBao", "thaiBai");
-//                model.addAttribute("checkTenTrungDiaChi", "Tên địa chỉ cũ thể đã tồn tại");
-//                List<DiaChi> listDiaChi = diaChiService.getAllByTaiKhoan(idTaiKhoan);
-//                TaiKhoan taiKhoan = taiKhoanService.getById(idTaiKhoan);
-//                model.addAttribute("listDiaChi", listDiaChi);
-//                model.addAttribute("idKhachHangUpdate", idTaiKhoan);
-////        check button update
-//                model.addAttribute("checkUpdate", "update");
-//                model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
-//                model.addAttribute("khachHang", taiKhoan);
-//                return "/admin-template/khach_hang/sua-khach-hang";
-//            } else {
-//                redirectAttributes.addFlashAttribute("checkThongBao", "thanhCong");
-//                TaiKhoan taiKhoan = taiKhoanService.getById(idTaiKhoan);
-//                diaChi.setTaiKhoan(taiKhoan);
-//                diaChi.setTrangThai(0);
-//                diaChi.setNgayTao(new Date());
-//                diaChi.setNgaySua(new Date());
-//                diaChiService.update(diaChi);
-//                return "redirect:/admin/khach-hang/view-update-khach-hang/" + idTaiKhoan;
-//            }
-//        }
-//    }
-
-
-//    @GetMapping("/dia-chi/delete/{idKhachHang}/{idDiaChi}")
-//    public String deleteDiaCHi(
-//            Model model,
-//            @PathVariable("idKhachHang") Long idKhachHang,
-//            @PathVariable("idDiaChi") Long idDiaCHi
-//    ) {
-//        UserInfoUserDetails name = principalCustom.getCurrentUserNameAdmin();
-//        if (name != null) {
-//            model.addAttribute("tenNhanVien", principalCustom.getCurrentUserNameAdmin().getHoVaTen());
-//        } else {
-//            return "redirect:/login";
-//        }
-//        model.addAttribute("checkModal", "modal");
-//        model.addAttribute("checkThongBao", "thaiBai");
-//        List<DiaChi> listDiaChi = diaChiService.getAllByTaiKhoan(idKhachHang);
-//        TaiKhoan taiKhoan = taiKhoanService.getById(idKhachHang);
-//        model.addAttribute("listDiaChi", listDiaChi);
-//        model.addAttribute("idKhachHangUpdate", idKhachHang);
-//        model.addAttribute("listTaiKhoan", taiKhoanService.getAll());
-//        model.addAttribute("khachHang", taiKhoan);
-//        diaChiService.deleteById(idDiaCHi);
-//        return "redirect:/admin/khach-hang/view-update-khach-hang/" + idKhachHang;
-//    }
-
 
     @PostMapping("/update")
     public String update(
@@ -452,14 +303,14 @@ public class KhachHangController {
             userInfo.setVaiTro(vaiTro);
             taiKhoanService.update(userInfo);
 
-//            GioHang gioHang = new GioHang();
-//            gioHang.setMaGioHang("GH" + gioHangService.genMaTuDong());
-//            gioHang.setGhiChu("");
-//            gioHang.setNgaySua(new Date());
-//            gioHang.setNgayTao(new Date());
-//            gioHang.setTaiKhoan(TaiKhoan.builder().id(userInfo.getId()).build());
-//            gioHang.setTrangThai(0);
-//            gioHangService.save(gioHang);
+            GioHang gioHang = new GioHang();
+            gioHang.setMaGioHang("GH" + gioHangService.genMaTuDong());
+            gioHang.setGhiChu("");
+            gioHang.setNgaySua(new Date());
+            gioHang.setNgayTao(new Date());
+            gioHang.setTaiKhoan(TaiKhoan.builder().id(userInfo.getId()).build());
+            gioHang.setTrangThai(0);
+            gioHangService.save(gioHang);
 
             return "redirect:/admin/khach-hang";
         }

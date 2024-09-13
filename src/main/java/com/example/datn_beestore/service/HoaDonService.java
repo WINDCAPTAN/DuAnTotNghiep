@@ -61,9 +61,10 @@ public interface HoaDonService {
 
 
 
+    Integer countHoaDonAll();
+
+    Long sumGiaTriHoaDonAll();
 
 
-
-
-
+    void guiHoaDonDienTu(HoaDon hoaDon, String url);
 }

@@ -101,4 +101,7 @@ public class TaiKhoan {
     @OneToMany(mappedBy = "taiKhoan")
     List<DiaChi> lstDiaChi;
 
+    @OneToOne(mappedBy = "taiKhoan")
+    GioHang gioHang;
+
 }

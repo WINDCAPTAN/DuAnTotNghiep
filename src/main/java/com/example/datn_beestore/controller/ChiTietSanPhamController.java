@@ -1,5 +1,6 @@
 package com.example.datn_beestore.controller;
 
+import com.example.datn_beestore.confic.ExportFileCTSP;
 import com.example.datn_beestore.confic.PrincipalCustom;
 import com.example.datn_beestore.confic.UserInfoUserDetails;
 import com.example.datn_beestore.entyti.ChiTietSanPham;
@@ -82,7 +83,7 @@ public class ChiTietSanPhamController {
         model.addAttribute("listKichCo", kichCoService.getAllDangHoatDong());
         model.addAttribute("listMauSac", mauSacService.getAllDangHoatDong());
         model.addAttribute("listTayAo", tayAoService.getAllDangHoatDong());
-        return model;
+            return model;
     }
 
     @GetMapping()
@@ -254,26 +255,37 @@ public class ChiTietSanPhamController {
 //        return "redirect:/admin/san-pham-chi-tiet";
 //    }
 
-//    @GetMapping("export-excel")
-//    public String exportExcel(
+    @GetMapping("export-excel")
+    public String exportExcel(
+            RedirectAttributes attributes
+    ) throws IOException {
+        ExportFileCTSP exportFileCTSP = new ExportFileCTSP();
+        exportFileCTSP.ExportFileExcel(chiTietSanPhamSerivce);
+        attributes.addFlashAttribute("checkTab", "true");
+        attributes.addFlashAttribute("checkThongBao", "thanhCong");
+        return "redirect:/admin/san-pham-chi-tiet";
+    }
+//    @GetMapping("file-ex-mau")
+//    public String fileMau(
 //            RedirectAttributes attributes
-//    ) throws IOException {
-//        ExportFileCTSP exportFileCTSP = new ExportFileCTSP();
+//    )
+//        throws IOException{
+//        ExportFileCTSP exportFileCTSP= new ExportFileCTSP();
 //        exportFileCTSP.ExportFileExcel(chiTietSanPhamSerivce);
-//        attributes.addFlashAttribute("checkTab", "true");
-//        attributes.addFlashAttribute("checkThongBao", "thanhCong");
+//        attributes.addFlashAttribute("checktab","true");
+//        attributes.addFlashAttribute("checkTHongBao", "thanhCong");
 //        return "redirect:/admin/san-pham-chi-tiet";
 //    }
 
-//    @GetMapping("file-mau-excel")
-//    public String fileMauExcel(
-//            RedirectAttributes attributes
-//    ) throws IOException {
-//        ExportFileCTSP exportFileCTSP = new ExportFileCTSP();
-//        exportFileCTSP.ExportFileExcelMau(chiTietSanPhamSerivce);
-//        attributes.addFlashAttribute("checkTab", "true");
-//        attributes.addFlashAttribute("checkThongBao", "thanhCong");
-//        return "redirect:/admin/san-pham-chi-tiet";
-//    }
+    @GetMapping("file-mau-excel")
+    public String fileMauExcel(
+            RedirectAttributes attributes
+    ) throws IOException {
+        ExportFileCTSP exportFileCTSP = new ExportFileCTSP();
+        exportFileCTSP.ExportFileExcelMau(chiTietSanPhamSerivce);
+        attributes.addFlashAttribute("checkTab", "true");
+        attributes.addFlashAttribute("checkThongBao", "thanhCong");
+        return "redirect:/admin/san-pham-chi-tiet";
+    }
 
 }

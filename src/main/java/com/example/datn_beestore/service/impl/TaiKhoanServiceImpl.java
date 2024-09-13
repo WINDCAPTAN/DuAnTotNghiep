@@ -1,9 +1,11 @@
 package com.example.datn_beestore.service.impl;
 
 
+import com.example.datn_beestore.entyti.GioHang;
 import com.example.datn_beestore.entyti.TaiKhoan;
 import com.example.datn_beestore.entyti.VaiTro;
 import com.example.datn_beestore.repository.TaiKhoanRepository;
+import com.example.datn_beestore.service.GioHangService;
 import com.example.datn_beestore.service.TaiKhoanService;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,23 +29,23 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-//    @Autowired
-//    private GioHangService gioHangService;
+    @Autowired
+    private GioHangService gioHangService;
 
     @Override
     public String addUser(TaiKhoan userInfo) {
         userInfo.setTrangThai(0);
         userInfo.setMatKhau(passwordEncoder.encode(userInfo.getMatKhau()));
         repository.save(userInfo);
-//        GioHang gioHang = new GioHang();
+        GioHang gioHang = new GioHang();
         Date currentDate = new Date();
-//        gioHang.setMaGioHang("GH" + gioHangService.genMaTuDong());
-//        gioHang.setGhiChu("");
-//        gioHang.setNgayTao(currentDate);
-//        gioHang.setNgaySua(currentDate);
-//        gioHang.setTaiKhoan(TaiKhoan.builder().id(userInfo.getId()).build());
-//        gioHang.setTrangThai(0);
-//        gioHangService.save(gioHang);
+        gioHang.setMaGioHang("GH" + gioHangService.genMaTuDong());
+        gioHang.setGhiChu("");
+        gioHang.setNgayTao(currentDate);
+        gioHang.setNgaySua(currentDate);
+        gioHang.setTaiKhoan(TaiKhoan.builder().id(userInfo.getId()).build());
+        gioHang.setTrangThai(0);
+        gioHangService.save(gioHang);
         return "user added to system";
     }
 
@@ -107,7 +109,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 
     @Override
     public void sendEmail1(TaiKhoan taiKhoan, String url, String random) {
-        String from = "glacatshopstore@gmail.com";
+        String from = "glacatshopshoes@gmail.com";
         String to = taiKhoan.getEmail();
         String subject = "Chào mừng bạn đến với Glacat - Xác Minh Tài Khoản của Bạn";
         String content =
@@ -124,7 +126,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
                         "<p class=\"email-content\">\n" +
                         "Hãy sử dụng mã xác minh trên để hoàn tất quá trình đăng ký của bạn. Nếu bạn không thực hiện thao tác này, tài khoản của bạn có thể không được kích hoạt.\n" +
                         "<br>\n" +
-                        "Cảm ơn bạn đã chọn Glacat! Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ với chúng tôi. Chúng tôi sẽ đem đến cho bạn những sản phẩm tuyệt vời nhất server Việt Nam ahihi\n" +
+                        "Cảm ơn bạn đã chọn Glacat! Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ với chúng tôi.\n" +
                         "</p>";
         try {
 

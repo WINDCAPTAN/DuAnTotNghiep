@@ -10,7 +10,6 @@ import com.example.datn_beestore.service.TaiKhoanService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +25,7 @@ import java.util.Random;
 
 @Controller
 public class FormLoginContrller {
-
+    private Long idTaiKhoan;
     @Autowired
     TaiKhoanService service;
 
@@ -200,7 +199,6 @@ public class FormLoginContrller {
         return "quen-mat-khau";
     }
 
-
     @PostMapping("/quen-mat-khau")
     public String quenMatKau(
             @RequestParam("email") String email, Model model,
@@ -247,6 +245,11 @@ public class FormLoginContrller {
             System.out.println(number);
         }
         return ran;
+    }
+    @GetMapping("/logout/true")
+    public String logout() {
+        idTaiKhoan = null;
+        return "dang-nhap";
     }
 
 }

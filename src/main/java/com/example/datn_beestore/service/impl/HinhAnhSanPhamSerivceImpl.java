@@ -28,13 +28,19 @@ public class HinhAnhSanPhamSerivceImpl implements HinhAnhSanPhamSerivce {
                 try {
                     HinhAnhSanPham hinhAnh = new HinhAnhSanPham();
                     // Lưu tệp vào cơ sở dữ liệu
+//                    hinhAnh.setUrl(multipartFile.getOriginalFilename());
+//                    hinhAnh.setNgayTao(currentDate);
+//                    hinhAnh.setNgaySua(currentDate);
+//                    hinhAnh.setTrangThai(0);
+//                    hinhAnh.setUuTien(0);
+//                    hinhAnh.setSanPham(sanPham);
+                    // Thực hiện các tác vụ khác nếu cần thiết
                     hinhAnh.setUrl(multipartFile.getOriginalFilename());
                     hinhAnh.setNgayTao(currentDate);
                     hinhAnh.setNgaySua(currentDate);
                     hinhAnh.setTrangThai(0);
                     hinhAnh.setUuTien(0);
                     hinhAnh.setSanPham(sanPham);
-                    // Thực hiện các tác vụ khác nếu cần thiết
                     repository.save(hinhAnh);
                 } catch (Exception e) {
                     e.printStackTrace();
