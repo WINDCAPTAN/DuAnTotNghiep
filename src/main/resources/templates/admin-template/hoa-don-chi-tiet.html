@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Glacat</title>
+    <title>Tee Haven</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-    <link href="../../../static/img/favicon.png" rel="icon">
+    <link href="../../../static/img/logo_teehaven.png" rel="icon">
 
     <!--    thư viện của bảng tích hợp tìm kiếm-->
     <link rel='stylesheet' href='https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css'>
@@ -36,8 +36,8 @@
     <div class="d-flex align-items-center justify-content-between">
 
         <a href="/ban-hang-tai-quay/hoa-don" class="logo d-flex align-items-center">
-            <img src="../../static/img/logo.png" alt="">
-            <span class="d-none d-lg-block">Glacat</span>
+            <img src="../../static/img/logo_teehaven.png" alt="">
+            <span class="d-none d-lg-block">Tee Haven</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
 
@@ -1462,7 +1462,7 @@
                                                                                 });
                                                                             }
                                                                         });
-                                                                        // giao hàng tiết kiệm
+                                                                        // giao hàng nhanh
                                                                         function calculateShippingFee() {
 
                                                                             var citySelect = document.getElementById('citySelect').value;
@@ -1520,18 +1520,18 @@
                                                                                     const giamGia = document.getElementById('giamGiaInput');
                                                                                     // Hàm cộng giá trị từ hai ô input và cập nhật nội dung của thẻ <h6>
                                                                                     function congHaiInputVaCapNhatTongGia() {
-                                                                                        // Lấy giá trị từ hai ô input
                                                                                         const tongTienHoaDon = parseFloat(tongTienHoaDonInput.value);
                                                                                         const shippingFee = parseFloat(shippingFeeResultInput.value);
-                                                                                        const giamGia1 = parseFloat(giamGia.value);
-                                                                                        // Kiểm tra nếu ô input shippingFee không có giá trị hợp lệ thì gán giá trị mặc định là 0
+                                                                                        const giamGia1 = isNaN(parseFloat(giamGia.value)) ? 0 : parseFloat(giamGia.value);
+
+                                                                                        // Kiểm tra nếu shippingFee không có giá trị hợp lệ thì gán giá trị mặc định là 0
                                                                                         const phiShip = isNaN(shippingFee) ? 0 : shippingFee;
 
-                                                                                        // Thực hiện phép cộng
+                                                                                        // Thực hiện phép tính tổng
                                                                                         const tongGia = tongTienHoaDon + phiShip - giamGia1;
 
                                                                                         // Hiển thị kết quả trong thẻ <h6>
-                                                                                        tongGiaValue.textContent = tongGia.toFixed(0); // Giữ hai chữ số sau dấu thập phân
+                                                                                        tongGiaValue.textContent = tongGia.toFixed(0);
                                                                                         tongAll.value = tongGia.toFixed(0);
                                                                                     }
 
@@ -1741,7 +1741,7 @@
                                                                                                             class="col-md-3">
                                                                                                         <div class="card-body"
                                                                                                              style="margin-left: 5px;margin-top: 15px">
-                                                                                                            <img src="../../static/img/logo.png"
+                                                                                                            <img src="../../static/img/logo_teehaven.png"
                                                                                                                  style="margin-left: 15px"
                                                                                                                  class="img-fluid rounded-start"
                                                                                                                  alt="...">
@@ -2072,14 +2072,14 @@
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
     <div class="copyright">
-        <!-- &copy; Copyright <strong><span>Glacat</span></strong>. All Rights Reserved -->
+        <!-- &copy; Copyright <strong><span>Tee Haven</span></strong>. All Rights Reserved -->
     </div>
     <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Website bán áo Glacat
+        Website bán áo Tee Haven
     </div>
 </footer><!-- End Footer -->
 

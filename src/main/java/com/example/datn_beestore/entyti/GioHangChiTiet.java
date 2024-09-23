@@ -1,6 +1,5 @@
 package com.example.datn_beestore.entyti;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -45,8 +44,8 @@ public class GioHangChiTiet {
     @Column(name = "trang_thai")
     private Integer trangThai;
 
-    // Thêm mối quan hệ ManyToOne với cascade = PERSIST
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gio_hang_id", referencedColumnName = "id")
     private GioHang gioHang;
 

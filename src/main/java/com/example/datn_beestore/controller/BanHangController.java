@@ -142,7 +142,7 @@ public class BanHangController {
 
         request.setAttribute("hoaDon", hd);
 
-        return "/admin-template/hoa-don-chi-tiet";
+        return "admin-template/hoa-don-chi-tiet";
     }
 
     @PostMapping("/hoa-don/add")
