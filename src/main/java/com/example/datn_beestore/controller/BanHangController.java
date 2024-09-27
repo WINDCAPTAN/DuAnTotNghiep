@@ -421,7 +421,7 @@ public class BanHangController {
         if (hd.getTrangThai() == 4) {
             return "redirect:/ban-hang-tai-quay/hoa-don/" + id;
         }
-        return "/admin-template/detail-hoa-don";
+        return "admin-template/detail-hoa-don";
     }
 
 //    void rollbackHoanTra(Long idhdc) {

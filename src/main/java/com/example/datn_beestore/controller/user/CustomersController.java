@@ -663,33 +663,33 @@ public class CustomersController {
         return "/customer-template/tra-cuu-don-hang";
     }
 
-//    @GetMapping("/tra-cuu-don-hang/{idHoaDon}/{email}")
-//    public String detailTraCuuHoaDon(
-//            @RequestParam("maDonHang") String maDonHang,
-//            @RequestParam("sdt") String sdt,
-//            Model model,
-//            RedirectAttributes attributes
-//    ) {
-//        if (principalCustom.getCurrentUserNameCustomer() != null) {
-//            TaiKhoan khachHang = khachHangService.getById(idTaiKhoan);
-//            model.addAttribute("checkDangNhap", "true");
-//            model.addAttribute("soLuongSPGioHangCT",
-//                    gioHangChiTietService.soLuongSPGioHangCT(khachHang.getGioHang().getId()));
-//        } else {
-//            model.addAttribute("checkDangNhap", "false");
-//        }
-//
-//        HoaDon hoaDon = hoaDonService.finByHoaDonMaHDSdt(maDonHang, sdt);
-//        if (hoaDon == null) {
-//            attributes.addFlashAttribute("checkLoiTraCuuHoaDon",
-//                    "Không tìm thấy đơn hàng. Vui lòng kiểm tra lại mã đơn hàng và số điện thoại.");
-//            return "redirect:/tra-cuu-don-hang";
-//        } else {
-//            model.addAttribute("byHoaDon", hoaDonService.findById(hoaDon.getId()));
-//            model.addAttribute("listLichSuHoaDon", lichSuHoaDonService.findByIdhdNgaySuaAsc(hoaDon.getId()));
-//        }
-//        return "/customer-template/detail-tra-cuu-don-hang";
-//    }
+    @GetMapping("/tra-cuu-don-hang/{idHoaDon}/{email}")
+    public String detailTraCuuHoaDon(
+            @RequestParam("maDonHang") String maDonHang,
+            @RequestParam("sdt") String sdt,
+            Model model,
+            RedirectAttributes attributes
+    ) {
+        if (principalCustom.getCurrentUserNameCustomer() != null) {
+            TaiKhoan khachHang = khachHangService.getById(idTaiKhoan);
+            model.addAttribute("checkDangNhap", "true");
+            model.addAttribute("soLuongSPGioHangCT",
+                    gioHangChiTietService.soLuongSPGioHangCT(khachHang.getGioHang().getId()));
+        } else {
+            model.addAttribute("checkDangNhap", "false");
+        }
+
+        HoaDon hoaDon = hoaDonService.finByHoaDonMaHDSdt(maDonHang, sdt);
+        if (hoaDon == null) {
+            attributes.addFlashAttribute("checkLoiTraCuuHoaDon",
+                    "Không tìm thấy đơn hàng. Vui lòng kiểm tra lại mã đơn hàng và số điện thoại.");
+            return "redirect:/tra-cuu-don-hang";
+        } else {
+            model.addAttribute("byHoaDon", hoaDonService.findById(hoaDon.getId()));
+            model.addAttribute("listLichSuHoaDon", lichSuHoaDonService.findByIdhdNgaySuaAsc(hoaDon.getId()));
+        }
+        return "/customer-template/detail-tra-cuu-don-hang";
+    }
 
     @GetMapping("/lien-he/add")
     public String lienHeAdd(
