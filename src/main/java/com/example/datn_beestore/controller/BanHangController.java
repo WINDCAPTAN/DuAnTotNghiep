@@ -11,8 +11,7 @@ import com.example.datn_beestore.entyti.VaiTro;
 import com.example.datn_beestore.entyti.Voucher;
 import com.example.datn_beestore.service.ChiTietSanPhamSerivce;
 import com.example.datn_beestore.service.DiaChiService;
-
-
+import com.example.datn_beestore.service.GioHangService;
 import com.example.datn_beestore.service.HoaDonChiTietService;
 import com.example.datn_beestore.service.HoaDonService;
 import com.example.datn_beestore.service.KhachHangService;
@@ -45,12 +44,12 @@ import java.util.Random;
 @RequestMapping("/ban-hang-tai-quay")
 @RequiredArgsConstructor
 public class BanHangController {
-    //    @Autowired
-//    GioHangService gioHangService;
-//
+    @Autowired
+    GioHangService gioHangService;
+
     @Autowired
     LichSuHoaDonService lichSuHoaDonService;
-    //
+
     @Autowired
     PasswordEncoder passwordEncoder;
 

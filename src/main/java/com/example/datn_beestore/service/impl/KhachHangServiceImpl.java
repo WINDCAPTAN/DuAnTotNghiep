@@ -145,21 +145,21 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     public void sendEmail(TaiKhoan taiKhoan, String path, String random) {
-        String from = "glacatshopshoes@gmail.com";
+        String from = "phongnhp226@gmail.com";
         String to = taiKhoan.getEmail();
-        String subject = "Chào mừng bạn đến với Glacat - Tài khoản Khách Hàng mới đã được tạo";
+        String subject = "Chào mừng bạn đến với Tee  Haven - Tài khoản Khách Hàng mới đã được tạo";
         String content =
                 "Chào bạn," + "<br>" +
-                        "Chúc mừng! Tài khoản Khách Hàng mới của bạn tại Glacat đã được tạo thành công. Dưới đây là thông tin đăng nhập của bạn:" + "<br>" +
+                        "Chúc mừng! Tài khoản Khách Hàng mới của bạn tại Tee  Haven đã được tạo thành công. Dưới đây là thông tin đăng nhập của bạn:" + "<br>" +
                         "- Tài khoản:  " + taiKhoan.getTenTaiKhoan() + "<br>" +
                         "- Mật khẩu:   " + random +
                         "<br>" +
-                        "Cảm ơn bạn đã chọn Glacat! Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ với chúng tôi.";
+                        "Cảm ơn bạn đã chọn Tee  Haven! Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ với chúng tôi.";
         try {
 
             MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
-            helper.setFrom(from, "Glacat");
+            helper.setFrom(from, "Tee  Haven");
             helper.setTo(to);
             helper.setSubject(subject);
             content = content.replace("[[name]]", taiKhoan.getTenTaiKhoan());
@@ -182,7 +182,7 @@ public class KhachHangServiceImpl implements KhachHangService {
     @Override
     public void guiLieuHe(String hoTen, String email, String chuDe, String tinNhan) {
         String from = email;
-        String to = "glacatshopshoes@gmail.com";
+        String to = "Tee  Havenshopshoes@gmail.com";
         String subject = chuDe;
         String content = tinNhan;
         try {

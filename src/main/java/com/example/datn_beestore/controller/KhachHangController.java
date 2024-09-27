@@ -338,5 +338,4 @@ public class KhachHangController {
         return ran;
     }
 
-
 }

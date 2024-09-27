@@ -60,12 +60,12 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
     //   Cac phương thức để  email xác nhận
     @Override
     public void sendEmail(TaiKhoan taiKhoan, String url) {
-        String from = "glacatshopshoes@gmail.com";
+        String from = "phongnhp226@gmail.com";
         String to = taiKhoan.getEmail();
-        String subject = "Khôi Phục Mật Khẩu Tài Khoản Glacat của Bạn";
+        String subject = "Khôi Phục Mật Khẩu Tài Khoản Tee Haven của Bạn";
         String content = "<p class=\"email-content\" style=\"font-family: 'Arial', sans-serif;font-size: 16px;color: #333;line-height: 1.5;\">\n" +
                 "Chào [[name]], <br>\n" +
-                "Chúc mừng! Bạn đã yêu cầu hướng dẫn khôi phục mật khẩu cho tài khoản của mình trên Glacat. Để tiếp tục quá trình này, vui lòng nhấn vào liên kết dưới đây:\n" +
+                "Chúc mừng! Bạn đã yêu cầu hướng dẫn khôi phục mật khẩu cho tài khoản của mình trên Tee Haven. Để tiếp tục quá trình này, vui lòng nhấn vào liên kết dưới đây:\n" +
                 "</p>\n" +
 
                 "<p class=\"email-content\">\n" +
@@ -79,14 +79,14 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
                 "<br>\n" +
                 "Chân thành cảm ơn,\n" +
                 "<br>\n" +
-                "Đội ngũ Glacat\n" +
+                "Đội ngũ Tee Haven\n" +
                 "</p>";
         try {
 
             MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
 
-            helper.setFrom(from, "Glacat");
+            helper.setFrom(from, "Tee Haven");
             helper.setTo(to);
             helper.setSubject(subject);
 
@@ -109,13 +109,13 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 
     @Override
     public void sendEmail1(TaiKhoan taiKhoan, String url, String random) {
-        String from = "glacatshopshoes@gmail.com";
+        String from = "phongnhp226@gmail.com";
         String to = taiKhoan.getEmail();
-        String subject = "Chào mừng bạn đến với Glacat - Xác Minh Tài Khoản của Bạn";
+        String subject = "Chào mừng bạn đến với Tee Haven - Xác Minh Tài Khoản của Bạn";
         String content =
                 "<p class=\"email-content\" style=\"font-family: 'Arial', sans-serif;font-size: 16px;color: #333;line-height: 1.5;\">\n" +
                         "Chào [[name]], <br>\n" +
-                        "Chúc mừng! Tài khoản Khách Hàng mới của bạn tại Glacat đã được tạo thành công. Để bảo vệ tính bảo mật của tài khoản, chúng tôi cần xác minh rằng địa chỉ email này thuộc về bạn.\n" +
+                        "Chúc mừng! Tài khoản Khách Hàng mới của bạn tại Tee Haven đã được tạo thành công. Để bảo vệ tính bảo mật của tài khoản, chúng tôi cần xác minh rằng địa chỉ email này thuộc về bạn.\n" +
                         "</p>\n" +
 
                         "<p class=\"email-content\">\n" +
@@ -126,14 +126,14 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
                         "<p class=\"email-content\">\n" +
                         "Hãy sử dụng mã xác minh trên để hoàn tất quá trình đăng ký của bạn. Nếu bạn không thực hiện thao tác này, tài khoản của bạn có thể không được kích hoạt.\n" +
                         "<br>\n" +
-                        "Cảm ơn bạn đã chọn Glacat! Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ với chúng tôi.\n" +
+                        "Cảm ơn bạn đã chọn Tee Haven! Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, đừng ngần ngại liên hệ với chúng tôi.\n" +
                         "</p>";
         try {
 
             MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
 
-            helper.setFrom(from, "Glacat");
+            helper.setFrom(from, "Tee Haven");
             helper.setTo(to);
             helper.setSubject(subject);
 

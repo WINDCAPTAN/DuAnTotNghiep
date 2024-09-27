@@ -210,7 +210,7 @@ public class NhanVienController {
             String url = request.getRequestURL().toString();
             System.out.println(url);
             url = url.replace(request.getServletPath(), "");
-//            taiKhoanService.sendEmail(userInfo, url, random2);
+            taiKhoanService.sendEmail(userInfo, url, random2);
             System.out.println(userInfo);
             userInfo.setNgayTao(new Date());
             userInfo.setNgaySua(new Date());

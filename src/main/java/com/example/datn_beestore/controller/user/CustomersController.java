@@ -698,7 +698,6 @@ public class CustomersController {
             @RequestParam("chuDe")String chuDe,
             @RequestParam("tinNhan")String tinNhan,
             RedirectAttributes redirectAttributes
-
     ) {
         khachHangService.guiLieuHe(hoTen,email,chuDe,tinNhan);
         redirectAttributes.addFlashAttribute("checkTBLienHe","true");

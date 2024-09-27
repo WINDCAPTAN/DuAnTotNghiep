@@ -163,7 +163,7 @@ public class HoaDonServiceImpl implements HoaDonService {
     @Override
     public void guiHoaDonDienTu(HoaDon hoaDon, String url) {
 
-        String from = "glacatshopshoes@gmail.com";
+        String from = "phongnhp226@gmail.com";
         String to = hoaDon.getTaiKhoan().getEmail();
         String subject = "Thông tin hóa đơn";
         StringBuilder content = new StringBuilder();
@@ -172,7 +172,7 @@ public class HoaDonServiceImpl implements HoaDonService {
 
         if (hoaDon.getTrangThai() == 1) {
 
-            content.append("<p style=\"color: black;\">Chúng tôi cảm ơn vì bạn đã lựa chọn mua sắm tại Glacat.</p>")
+            content.append("<p style=\"color: black;\">Chúng tôi cảm ơn vì bạn đã lựa chọn mua sắm tại Tee Haven.</p>")
                     .append("<p style=\"color: black;\">Chúng tôi xin thông báo rằng đơn hàng của bạn đã được xác nhận và chúng tôi đang chuẩn bị hàng. Chúng tôi sẽ gửi cho đơn vị vận chuyển sớm nhất để bạn có thể có một trải nghiệm tốt.</p>")
                     .append("<p style=\"color: black;\">Để kiểm tra chi tiết đơn hàng, vui lòng <a href=\"[[URL]]\" target=\"_self\">nhấn vào đây</a> và nhập mã đơn hàng cùng với số điện thoại của bạn. Để đảm bảo tính chính xác, hãy sử dụng thông tin mà bạn đã cung cấp khi đặt hàng.</p>")
                     .append("<p style=\"color: black;\">Đây là mã đơn hàng và số điện thoại của bạn dựa trên thông tin bạn cung cấp trong đơn hàng</p>")
@@ -221,7 +221,7 @@ public class HoaDonServiceImpl implements HoaDonService {
                     .append("<p style=\"color: black;\">Nếu có bất kỳ thắc mắc nào hoặc bạn cần hỗ trợ thêm, đừng ngần ngại liên hệ với chúng tôi qua số điện thoại này 0377463664.</p>")
                     .append("<p style=\"color: black;\">Chúng tôi rất xin lỗi vì mọi phiền phức và hiểu rằng điều này có thể tạo ra sự bất tiện cho bạn. Chúng tôi cam kết tiếp tục nỗ lực để cải thiện dịch vụ và hy vọng được phục vụ bạn tốt hơn trong tương lai.</p>")
                     .append("<p style=\"color: black;\">Trân trọng,</p>")
-                    .append("<p style=\"color: black;\">Shop Glacat</p>");
+                    .append("<p style=\"color: black;\">Shop Tee Haven</p>");
 
         } else if (hoaDon.getTrangThai() == 6) {
 
@@ -308,10 +308,10 @@ public class HoaDonServiceImpl implements HoaDonService {
 
                     "<div class=\"col-md-12\">" +
                             "<p style=\"color: black;\" class=\"email-content\">\n" +
-                            "Cảm ơn bạn đã chọn Glacat! Nếu có bất kỳ thắc mắc nào hoặc cần hỗ trợ, hãy liên hệ với chúng tôi qua số 0377463664 để được hỗ trợ.\n" +
+                            "Cảm ơn bạn đã chọn Tee Haven! Nếu có bất kỳ thắc mắc nào hoặc cần hỗ trợ, hãy liên hệ với chúng tôi qua số 0377463664 để được hỗ trợ.\n" +
                             "</p>" +
                             "<p style=\"color: black;\">Trân trọng,</p>" +
-                            "<p style=\"color: black;\">Glacat</p>" +
+                            "<p style=\"color: black;\">Tee Haven</p>" +
                             "</div>"
 
             );
@@ -385,10 +385,10 @@ public class HoaDonServiceImpl implements HoaDonService {
 
                     "<div class=\"col-md-12\">" +
                             "<p style=\"color: black;\" class=\"email-content\">\n" +
-                            "Cảm ơn bạn đã chọn Glacat! Nếu có bất kỳ thắc mắc nào hoặc cần hỗ trợ, hãy liên hệ với chúng tôi qua số 0377463664 để được hỗ trợ.\n" +
+                            "Cảm ơn bạn đã chọn Tee Haven! Nếu có bất kỳ thắc mắc nào hoặc cần hỗ trợ, hãy liên hệ với chúng tôi qua số 0377463664 để được hỗ trợ.\n" +
                             "</p>" +
                             "<p style=\"color: black;\">Trân trọng,</p>" +
-                            "<p style=\"color: black;\">Glacat</p>" +
+                            "<p style=\"color: black;\">Tee Haven</p>" +
                             "</div>"
 
             );
@@ -407,7 +407,7 @@ public class HoaDonServiceImpl implements HoaDonService {
             System.out.println(modifiedContent);
 
             content = new StringBuilder(modifiedContent);
-            helper.setFrom(from, "Glacat");
+            helper.setFrom(from, "Tee Haven");
             helper.setTo(to);
             helper.setSubject(subject);
 
